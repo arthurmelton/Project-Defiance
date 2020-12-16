@@ -4169,7 +4169,7 @@ GameObject:
   - component: {fileID: 1467673733}
   - component: {fileID: 1467673739}
   - component: {fileID: 1467673738}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: minimap
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -4292,7 +4292,7 @@ MonoBehaviour:
   isGlobal: 1
   blendDistance: 0
   weight: 1
-  priority: 0
+  priority: -1
 --- !u!114 &1467673739
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4308,7 +4308,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 1467673737}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 2048
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 0
