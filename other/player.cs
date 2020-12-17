@@ -21,6 +21,32 @@ public class player : MonoBehaviour
 
     private float startCloak = float.MaxValue;
 
+
+    public NewControls inputs;
+    private float abilityOne;
+    private float abilityTwo;
+
+    private void Awake()
+    {
+        inputs = new NewControls();
+
+        inputs.player.abilityone.performed += context => abilityOne = context.ReadValue<float>();
+
+        inputs.player.abilityone.canceled += context => abilityOne = 0f;
+
+        inputs.player.abilitytwo.performed += context => abilityTwo = context.ReadValue<float>();
+
+        inputs.player.abilitytwo.canceled += context => abilityTwo = 0f;
+    }
+
+    private void OnEnable()
+    {
+        inputs.Enable();
+    }
+    private void OnDisable()
+    {
+        inputs.Disable();
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -68,9 +94,9 @@ public class player : MonoBehaviour
 
         if (selected == 4)
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (abilityOne == 1)
             {
-                if (Input.GetKey(KeyCode.Mouse0))
+                if (abilityTwo == 1)
                 {
                     cloak = 0;
                     sprite.color = new Color(1f, 1f, 1f, 1f);
