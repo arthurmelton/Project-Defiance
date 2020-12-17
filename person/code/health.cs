@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class health : MonoBehaviour
 {
@@ -40,6 +41,8 @@ public class health : MonoBehaviour
 
     public ParticleSystem partial;
 
+    public GameObject selleted;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,6 +74,8 @@ public class health : MonoBehaviour
 
             Ui_at_death.SetActive(true);
             Ui_To_disable.SetActive(false);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(selleted);
         }
 
         if (Health > 100)
