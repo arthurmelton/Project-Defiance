@@ -57,6 +57,14 @@ public class @NewControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""f27bc559-b584-484b-a14b-55e4089b6f70"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -257,6 +265,28 @@ public class @NewControls : IInputActionCollection, IDisposable
                     ""action"": ""ability two"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77923a4b-08f0-48ad-aeaa-f99d3ab38bb8"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&mouse"",
+                    ""action"": ""esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4cf9c9a-2bf5-428f-bd06-ab94acf6c533"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -298,6 +328,7 @@ public class @NewControls : IInputActionCollection, IDisposable
         m_player_look = m_player.FindAction("look", throwIfNotFound: true);
         m_player_abilityone = m_player.FindAction("ability one", throwIfNotFound: true);
         m_player_abilitytwo = m_player.FindAction("ability two", throwIfNotFound: true);
+        m_player_esc = m_player.FindAction("esc", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -352,6 +383,7 @@ public class @NewControls : IInputActionCollection, IDisposable
     private readonly InputAction m_player_look;
     private readonly InputAction m_player_abilityone;
     private readonly InputAction m_player_abilitytwo;
+    private readonly InputAction m_player_esc;
     public struct PlayerActions
     {
         private @NewControls m_Wrapper;
@@ -361,6 +393,7 @@ public class @NewControls : IInputActionCollection, IDisposable
         public InputAction @look => m_Wrapper.m_player_look;
         public InputAction @abilityone => m_Wrapper.m_player_abilityone;
         public InputAction @abilitytwo => m_Wrapper.m_player_abilitytwo;
+        public InputAction @esc => m_Wrapper.m_player_esc;
         public InputActionMap Get() { return m_Wrapper.m_player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -385,6 +418,9 @@ public class @NewControls : IInputActionCollection, IDisposable
                 @abilitytwo.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbilitytwo;
                 @abilitytwo.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbilitytwo;
                 @abilitytwo.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAbilitytwo;
+                @esc.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEsc;
+                @esc.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEsc;
+                @esc.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEsc;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -404,6 +440,9 @@ public class @NewControls : IInputActionCollection, IDisposable
                 @abilitytwo.started += instance.OnAbilitytwo;
                 @abilitytwo.performed += instance.OnAbilitytwo;
                 @abilitytwo.canceled += instance.OnAbilitytwo;
+                @esc.started += instance.OnEsc;
+                @esc.performed += instance.OnEsc;
+                @esc.canceled += instance.OnEsc;
             }
         }
     }
@@ -433,5 +472,6 @@ public class @NewControls : IInputActionCollection, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnAbilityone(InputAction.CallbackContext context);
         void OnAbilitytwo(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
     }
 }
