@@ -108,9 +108,9 @@ public class player_movement : MonoBehaviour
 
             //movement.y = Input.GetAxis("Vertical");
 
-            if(mouse1.x == Mathf.Round(mouse1.x))
+            if(mouse.x == Mathf.Round(mouse.x) && mouse != new Vector2(0,0))
             {
-                MousePosition = Camera.main.ScreenToWorldPoint(mouse1);
+                MousePosition = Camera.main.ScreenToWorldPoint(mouse);
             }
             else
             {
