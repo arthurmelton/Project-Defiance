@@ -14,7 +14,7 @@ public class player_movement : MonoBehaviour
 
     public Camera Cam;
 
-    Vector3 MousePosition;
+    public Vector3 MousePosition;
 
     public int sellcted;
 
@@ -29,6 +29,8 @@ public class player_movement : MonoBehaviour
     public Vector2 mouse;
 
     private float abilityOne;
+
+    public Vector2 mouse1;
 
     private void Awake()
     {
@@ -66,7 +68,10 @@ public class player_movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(mouse != new Vector2(0,0))
+        {
+            mouse1 = mouse * 1000;
+        }
 
         if (Weapon.hardshot == 1 && sellcted == 1) 
         {
@@ -103,7 +108,16 @@ public class player_movement : MonoBehaviour
 
             //movement.y = Input.GetAxis("Vertical");
 
-            MousePosition = Camera.main.ScreenToWorldPoint(mouse);
+            if(mouse1.x == Mathf.Round(mouse1.x))
+            {
+                MousePosition = Camera.main.ScreenToWorldPoint(mouse1);
+            }
+            else
+            {
+                MousePosition = gameObject.transform.position + (Vector3)mouse1;
+            }
+
+            //MousePosition = Camera.main.ScreenToWorldPoint(mouse);
         }
         
 
