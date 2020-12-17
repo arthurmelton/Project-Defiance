@@ -43,36 +43,8 @@ public class weapon : MonoBehaviour
     public int hardshot = 0;
     private float nextActionTime7 = 0.0f;
     public float timetillnextricicheshot = 10f;
-    public NewControls inputs;
-    private float shootpreformed;
-    public float abilityOne;
-    private float abilityTwo;
 
-    private void Awake()
-    {
-        inputs = new NewControls();
-
-        inputs.player.shoot.performed += context => shootpreformed = context.ReadValue<float>();
-
-        inputs.player.shoot.canceled += context => shootpreformed = 0f;
-
-        inputs.player.abilityone.performed += context => abilityOne = context.ReadValue<float>();
-
-        inputs.player.abilityone.canceled += context => abilityOne = 0f;
-
-        inputs.player.abilitytwo.performed += context => abilityTwo = context.ReadValue<float>();
-
-        inputs.player.abilitytwo.canceled += context => abilityTwo = 0f;
-    }
-
-    private void OnEnable()
-    {
-        inputs.Enable();
-    }
-    private void OnDisable()
-    {
-        inputs.Disable();
-    }
+    
 
     // Start is called before the first frame update
     void Start()
@@ -108,10 +80,9 @@ public class weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (selected == 1)
         {
-            if (abilityOne == 0)
+            if (Input.GetKey(KeyCode.LeftShift))
             {
                 if (Time.time > nextActionTime2)
                 {
@@ -124,7 +95,7 @@ public class weapon : MonoBehaviour
 
         if (speed == 0) 
         {
-            if (shootpreformed == 1 && selected != 4 && hardshot == 0)
+            if (Input.GetKey(KeyCode.Mouse0) && selected != 4 && hardshot == 0)
             {
 
                 if (Time.time > nextActionTime)
@@ -135,7 +106,7 @@ public class weapon : MonoBehaviour
                 }
             }
 
-            if (shootpreformed == 1 && selected == 4 && automatic == 0 && hardshot == 0)
+            if (Input.GetKeyDown(KeyCode.Mouse0) && selected == 4 && automatic == 0 && hardshot == 0)
             {
 
                 if (Time.time > nextActionTime)
@@ -146,7 +117,7 @@ public class weapon : MonoBehaviour
                 }
             }
 
-            if (shootpreformed == 1 && selected == 4 && automatic == 1 && hardshot == 0)
+            if (Input.GetKey(KeyCode.Mouse0) && selected == 4 && automatic == 1 && hardshot == 0)
             {
 
                 if (Time.time > nextActionTime)
@@ -157,7 +128,7 @@ public class weapon : MonoBehaviour
                 }
             }
 
-            if (abilityTwo == 1 && selected == 3 && automaticdual == 0 && hardshot == 0)
+            if (Input.GetKey(KeyCode.Mouse1) && selected == 3 && automaticdual == 0 && hardshot == 0)
             {
 
                 if (Time.time > nextActionTime5)
@@ -170,7 +141,7 @@ public class weapon : MonoBehaviour
                 }
             }
 
-            if (abilityOne == 1 && selected == 2 && hardshot == 0)
+            if (Input.GetKey(KeyCode.LeftShift) && selected == 2 && hardshot == 0)
             {
 
                 if (Time.time > nextActionTime7)
@@ -183,13 +154,13 @@ public class weapon : MonoBehaviour
 
         }
 
-        if(automatic == 0 && Time.time > nextActionTime3 && abilityTwo == 1 && selected == 4 && hardshot == 0)
+        if(automatic == 0 && Time.time > nextActionTime3 && Input.GetKey(KeyCode.Mouse1) && selected == 4 && hardshot == 0)
         {
             automatic = 1;
             StartCoroutine(automatic1());
         }
 
-        if (abilityTwo == 1 && selected == 1 && hardshot == 0)
+        if (Input.GetKey(KeyCode.Mouse1) && selected == 1 && hardshot == 0)
         {
 
             if (Time.time > nextActionTime6)
@@ -211,7 +182,7 @@ public class weapon : MonoBehaviour
 
         yield return new WaitForSeconds(time);
 
-        if (shootpreformed == 1)
+        if (Input.GetKey(KeyCode.Mouse0))
         {
 
             Instantiate(Bullet, FirePoint2.position, FirePoint2.rotation);
