@@ -307,6 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemode: 0
   sellected: 0
+  controller: {fileID: 248658736}
 --- !u!4 &248658735
 Transform:
   m_ObjectHideFlags: 0
@@ -337,7 +338,7 @@ MonoBehaviour:
   state: 
   img: logo
   hasRoundCount: 0
-  newest: 1
+  newest: 0
   time: {fileID: 0}
   Time1: 0
 --- !u!1 &253573865

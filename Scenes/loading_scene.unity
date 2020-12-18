@@ -330,6 +330,7 @@ MonoBehaviour:
   state: 
   img: logo
   hasRoundCount: 0
+  newest: 0
   time: {fileID: 0}
   Time1: 0
 --- !u!4 &597375797
