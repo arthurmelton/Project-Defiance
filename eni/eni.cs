@@ -96,7 +96,7 @@ public class eni : MonoBehaviour
             if (Vector2.Distance(playerPosition, myPosition) <= Range || health != StartHealth || HasBeenSeen == true)
             {
 
-                HasBeenSeen = true;
+                // HasBeenSeen = true;
 
                 // try to look at the person
                 // what direction should i be looking
@@ -126,7 +126,16 @@ public class eni : MonoBehaviour
             }
         }
         
-        
+        if(Player1.cloak == 1)
+        {
+            path.canMove = false;
+        }
+
+        if (Player1.cloak == 0)
+        {
+            path.canMove = true;
+        }
+
     }
 
     void OnCollisionEnter2D(Collision2D col)
