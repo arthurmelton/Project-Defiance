@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -8,21 +6,23 @@ public class NewBehaviourScript : MonoBehaviour
 
     public int sellected;
 
+    public DiscordController controller;
+
     public void playgame()
     {
         sellected = PlayerPrefs.GetInt("Selcted");
-        if(sellected != 0)
-        gamemode = PlayerPrefs.GetInt("gamemode");
-        if(gamemode == 1) 
+        if (sellected != 0)
+            gamemode = PlayerPrefs.GetInt("gamemode");
+        if (gamemode == 1)
         {
             loader.load(loader.Scene.game);
         }
 
-        if(gamemode == 2) 
+        if (gamemode == 2)
         {
             loader.load(loader.Scene.game_1);
         }
-        
+
     }
 
     public void quit()
