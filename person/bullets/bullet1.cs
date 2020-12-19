@@ -35,6 +35,12 @@ public class bullet1 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+
+        if (col.gameObject.tag == "barrel")
+        {
+            col.GetComponent<barrel>().dead();
+        }
+        
         //Debug.Log(col);
         //Debug.Log(col.gameObject.name);
         if (gameObject.tag == "EniBullet" && col.gameObject.tag != "EniBullet" && col.gameObject.tag != "Eni" && col.gameObject.tag != "Bullet" && col.gameObject.tag != "healthPod")

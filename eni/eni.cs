@@ -54,6 +54,7 @@ public class eni : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        path.maxSpeed = MoveSpeed * Time.deltaTime * 60;
 
         if (health <= 0)
         {
@@ -147,7 +148,6 @@ public class eni : MonoBehaviour
             // decrese my health by the bullet damage
             health -= Bullet.dmg;
         }
-
     }
     void OnCollisionStay2D(Collision2D collision)
     {

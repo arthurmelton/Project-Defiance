@@ -140,6 +140,10 @@ MonoBehaviour:
   ZombieDmg: 0
   zombieAttackSpeed: 0.2
   partial: {fileID: 3415302331647644195, guid: 2af90a1060239f541b409d84bc4f7e3b, type: 3}
+  image: {fileID: 0}
+  path: {fileID: 0}
+  partial1: {fileID: 0}
+  explodeDmg: 1
 --- !u!50 &5562205490162585187
 Rigidbody2D:
   serializedVersion: 4

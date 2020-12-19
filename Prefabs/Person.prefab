@@ -242,8 +242,11 @@ MonoBehaviour:
   MoveSpeednormal: 0
   RB: {fileID: 7400157952810495749}
   Cam: {fileID: 0}
+  MousePosition: {x: 0, y: 0, z: 0}
   sellcted: 0
   player: {fileID: 0}
+  mouse: {x: 0, y: 0}
+  mouse1: {x: 0, y: 0}
 --- !u!114 &7400157952810495752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +279,7 @@ MonoBehaviour:
   timetillnexthardshot: 0
   hardshot: 0
   timetillnextricicheshot: 10
+  abilityOne: 0
 --- !u!114 &3890950218840726328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,6 +303,8 @@ MonoBehaviour:
   Ui_at_death: {fileID: 0}
   Ui_To_disable: {fileID: 0}
   partial: {fileID: 3415302331647644195, guid: 2af90a1060239f541b409d84bc4f7e3b, type: 3}
+  selleted: {fileID: 0}
+  explodeDmg: 1
 --- !u!114 &1740455395
 MonoBehaviour:
   m_ObjectHideFlags: 0
