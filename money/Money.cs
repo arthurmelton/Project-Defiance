@@ -1,28 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Money : MonoBehaviour
+namespace money
 {
+    public class Money : MonoBehaviour
+    {
 
-    public int Dollars;
+        public int Dollars;
 
-    // Start is called before the first frame update
-    void Start() {
+        // Start is called before the first frame update
+        void Start() {
 
-    }
+        }
 
-    void Update() {
+        void Update() {
 
 
-    }
-    void OnTriggerEnter2D( Collider2D collision ) {
+        }
+        void OnTriggerEnter2D( Collider2D collision ) {
 
-        if( collision.gameObject.tag == "Money" ) {
+            if( collision.gameObject.tag == "Money" ) {
 
-            Dollars++;
-            Destroy( collision.gameObject );
+                Dollars++;
+                Destroy( collision.gameObject );
 
+            }
         }
     }
 }

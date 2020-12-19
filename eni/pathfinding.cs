@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class pathfinding
+﻿namespace eni
 {
-    //public Pathfinding(int width, int height)
-    //{
+    public class pathfinding
+    {
+        //public Pathfinding(int width, int height)
+        //{
 
-    //}
+        //}
+    }
 }

@@ -1,97 +1,91 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using other;
+using person.code;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class bullet : MonoBehaviour
+namespace person.bullets
 {
+    public class bullet : MonoBehaviour
+    {
 
-    public float speed = 20f;
+        public float speed = 20f;
 
-    public Rigidbody2D RB;
+        [FormerlySerializedAs("RB")] public Rigidbody2D rb;
 
-    public int dmg = 3;
+        public int dmg = 3;
 
-    public int hardhit = 0;
+        private int hardHit { get; set; } = 0;
 
-    public int selected;
+        public int selected;
 
-    private breakable_wall breakable_Wall;
+        private breakable_wall _breakableWall;
 
-    public int gamemode;
+        public int gamemode;
 
-    private health health;
+        private health _health;
 
 
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        RB.velocity = transform.right * speed;
-
-        gamemode = PlayerPrefs.GetInt("gamemode");
-
-        selected = PlayerPrefs.GetInt("Selcted");
-
-        if(selected == 1)
+        // Start is called before the first frame update
+        private void Start()
         {
-            dmg = 10;
-        }
+            rb.velocity = transform.right * speed;
 
-        if (selected == 2)
-        {
-            dmg = 7;
-        }
+            gamemode = PlayerPrefs.GetInt("gamemode");
 
-        if (selected == 4)
-        {
-            dmg = 15;
-        }
+            selected = PlayerPrefs.GetInt("Selcted");
 
-        if (selected == 5)
-        {
-            dmg = 2;
-        }
-
-        hardhit = 0;
-
-    }
-
-    void Update()
-    {
-
-
-    }
-
-    void OnTriggerEnter2D(Collider2D col)
-    {
-
-        if(col.gameObject.tag == "barrel")
-        {
-            col.GetComponent<barrel>().dead();
-        }
-
-        //Debug.Log(col);
-        //Debug.Log(col.gameObject.name);
-        if (gameObject.tag == "Bullet" && col.gameObject.tag != "Bullet" && col.gameObject.tag != "Player" && col.gameObject.tag != "EniBullet" && col.gameObject.tag != "healthPod")
-        {
-            if (col.gameObject.tag == "destrutable_wall")
+            switch (selected)
             {
-                breakable_Wall = col.gameObject.GetComponent<breakable_wall>();
-
-                breakable_Wall.health -= dmg;
+                case 1:
+                    dmg = 10;
+                    break;
+                case 2:
+                    dmg = 7;
+                    break;
+                case 4:
+                    dmg = 15;
+                    break;
+                case 5:
+                    dmg = 2;
+                    break;
             }
 
-            if (gameObject.tag == "Bullet" && col.gameObject.tag == "Eni" || col.gameObject.tag == "Zombie")
+            hardHit = 0;
+
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+
+            if(col.gameObject.CompareTag("barrel"))
             {
-                eni Eni = col.gameObject.GetComponent<eni>();
-                // decrese my health by the bullet damage
-                Eni.health -= dmg;
+                col.GetComponent<barrel>().dead();
+            }
+
+            //Debug.Log(col);
+            //Debug.Log(col.gameObject.name);
+            if (!gameObject.CompareTag("Bullet") || col.gameObject.CompareTag("Bullet") ||
+                col.gameObject.CompareTag("Player") || col.gameObject.CompareTag("EniBullet") ||
+                col.gameObject.CompareTag("healthPod")) return;
+            if (col.gameObject.CompareTag("destrutable_wall"))
+            {
+                _breakableWall = col.gameObject.GetComponent<breakable_wall>();
+
+                _breakableWall.health -= dmg;
+            }
+
+            if (gameObject.CompareTag("Bullet") && col.gameObject.CompareTag("Eni") || col.gameObject.CompareTag("Zombie"))
+            {
+                var eni = col.gameObject.GetComponent<eni.eni>();
+                // decrease my health by the bullet damage
+                eni.health -= dmg;
             }
 
             Destroy(gameObject);
-        }
 
-    }
+        }
     
 
+    }
 }

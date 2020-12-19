@@ -1,49 +1,50 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class spawnenizombie : MonoBehaviour
+namespace other
 {
-    
-    public GameObject eni;
-    
-    public float nextActionTime = 0.0f;
-
-    public float timetillnextenispawn = 10f;
-
-    public float nextActionTime1 = 0.0f;
-
-    public float timetillnextactiontimeislowered = 10;
-
-    public Transform RB;
-
-    public time time;
-
-    public GameObject timetext;
-    
-    // Start is called before the first frame update
-    void Start()
+    public class spawnenizombie : MonoBehaviour
     {
-        time = timetext.GetComponent<time>();
-    }
+    
+        public GameObject eni;
+    
+        public float nextActionTime = 0.0f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if(Time.time > nextActionTime) 
+        public float timetillnextenispawn = 10f;
+
+        public float nextActionTime1 = 0.0f;
+
+        public float timetillnextactiontimeislowered = 10;
+
+        public Transform RB;
+
+        public time time;
+
+        public GameObject timetext;
+    
+        // Start is called before the first frame update
+        void Start()
         {
-            nextActionTime = Time.time + timetillnextenispawn;
-
-            Instantiate(eni, RB.position, RB.rotation);
-
-            time.round += 1;
+            time = timetext.GetComponent<time>();
         }
 
-        if(Time.time > nextActionTime1) 
+        // Update is called once per frame
+        void Update()
         {
-            nextActionTime1 = Time.time + timetillnextactiontimeislowered;
+            if(Time.time > nextActionTime) 
+            {
+                nextActionTime = Time.time + timetillnextenispawn;
 
-            timetillnextenispawn -= 0.1f;
+                Instantiate(eni, RB.position, RB.rotation);
+
+                time.round += 1;
+            }
+
+            if(Time.time > nextActionTime1) 
+            {
+                nextActionTime1 = Time.time + timetillnextactiontimeislowered;
+
+                timetillnextenispawn -= 0.1f;
+            }
         }
     }
 }

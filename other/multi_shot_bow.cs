@@ -1,40 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using person.code;
 using UnityEngine;
 
-public class multi_shot_bow : MonoBehaviour
+namespace other
 {
-    public int selected;
-    private float nextActionTime = 0.0f;
-    public float timetillnextmultshot = 10f;
-    public GameObject Bullet;
-    public Transform self;
-    public GameObject Player;
-    private weapon player2;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public class multi_shot_bow : MonoBehaviour
     {
-        selected = PlayerPrefs.GetInt("Selcted");
+        public int selected;
+        private float nextActionTime = 0.0f;
+        public float timetillnextmultshot = 10f;
+        public GameObject Bullet;
+        public Transform self;
+        public GameObject Player;
+        private weapon player2;
 
-        player2 = Player.GetComponent<weapon>();
 
-        timetillnextmultshot = player2.timetillnextmultshot;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (selected == 1)
+        // Start is called before the first frame update
+        void Start()
         {
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                if (Time.time > nextActionTime)
-                {
-                    nextActionTime = Time.time + timetillnextmultshot;
+            selected = PlayerPrefs.GetInt("Selcted");
 
-                    Instantiate(Bullet, self.position, self.rotation);
+            player2 = Player.GetComponent<weapon>();
+
+            timetillnextmultshot = player2.timetillnextmultshot;
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            if (selected == 1)
+            {
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    if (Time.time > nextActionTime)
+                    {
+                        nextActionTime = Time.time + timetillnextmultshot;
+
+                        Instantiate(Bullet, self.position, self.rotation);
+                    }
                 }
             }
         }

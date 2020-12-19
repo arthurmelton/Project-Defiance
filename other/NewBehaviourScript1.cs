@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class NewBehaviourScript1 : MonoBehaviour
+namespace other
 {
+    public class NewBehaviourScript1 : MonoBehaviour
+    {
 
    
+    }
 }

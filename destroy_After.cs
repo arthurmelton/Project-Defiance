@@ -1,20 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class destroy_After : MonoBehaviour
+public class DestroyAfter : MonoBehaviour
 {
-    public float Time;
+    [FormerlySerializedAs("Time")] public float time;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Destroy(gameObject, Time);
+        Destroy(gameObject, time);
     }
 }

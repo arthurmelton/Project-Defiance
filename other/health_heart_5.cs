@@ -1,54 +1,56 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using person.code;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class health_heart_5 : MonoBehaviour
+namespace other
 {
-
-    public GameObject Player;
-
-    private health Player_health;
-
-    public int Max_Player_health = 100;
-
-    private double health_thing;
-
-    private float heath_thing3;
-
-    private decimal health_thing2;
-
-    // Start is called before the first frame update
-    void Start()
+    public class health_heart_5 : MonoBehaviour
     {
-        Player_health = Player.GetComponent<health>();
 
-        Max_Player_health = Player_health.startHealth;
-    }
+        [FormerlySerializedAs("Player")] public GameObject player;
 
-    // Update is called once per frame
-    void Update()
-    {
-        Player_health = Player.GetComponent<health>();
+        private health _playerHealth;
 
-        if (Player_health.Health >= ((Max_Player_health / 5)) * 5)
+        [FormerlySerializedAs("Max_Player_health")] public int maxPlayerHealth = 100;
+
+        private double _healthThing;
+
+        private float _heathThing3;
+
+        private decimal _healthThing2;
+        private health _health;
+        private Transform _heart1;
+        private Transform _heart2;
+
+        // Start is called before the first frame update
+        private void Start()
         {
-            Transform heart1 = transform.Find("heart_red");
+            _heart2 = transform.Find("heart_red");
+            _heart1 = transform.Find("heart_red");
+            _health = player.GetComponent<health>();
+            _playerHealth = player.GetComponent<health>();
 
-            heart1.localScale = new Vector3(0.76f, 0.7875f);
+            maxPlayerHealth = _playerHealth.startHealth;
         }
 
-            if (Player_health.Health < ((Max_Player_health / 5)) * 5)
+        // Update is called once per frame
+        private void Update()
         {
-            
-            health_thing = ((Player_health.Health - ((Max_Player_health / 5) * 4)) * 3.8);
+            _playerHealth = _health;
 
-            health_thing2 = (decimal)health_thing / Max_Player_health;
+            if (_playerHealth.Health >= ((maxPlayerHealth / 5)) * 5)
+            {
+                _heart1.localScale = new Vector3(0.76f, 0.7875f);
+            }
 
-            heath_thing3 = (float)health_thing2;
+            if (_playerHealth.Health >= ((maxPlayerHealth / 5)) * 5) return;
+            _healthThing = ((_playerHealth.Health - ((maxPlayerHealth / 5) * 4)) * 3.8);
 
-            Transform heart1 = transform.Find("heart_red");
+            _healthThing2 = (decimal)_healthThing / maxPlayerHealth;
 
-            heart1.localScale = new Vector3(heath_thing3, 0.7875f);
+            _heathThing3 = (float)_healthThing2;
+
+            _heart2.localScale = new Vector3(_heathThing3, 0.7875f);
         }
     }
 }

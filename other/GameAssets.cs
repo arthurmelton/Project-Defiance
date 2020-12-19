@@ -1,20 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using System.Reflection;
+﻿using UnityEngine;
 
-public class GameAssets : MonoBehaviour
+namespace other
 {
-    private static GameAssets _i;
-
-    public static GameAssets i
+    public class GameAssets : MonoBehaviour
     {
-        get
-        {
-            if (_i = null) _i = Instantiate(Resources.Load<GameAssets>("GameAssets"));
-            return _i;
-        }
-    }
+        private static GameAssets _i;
 
-    public Transform pfDamagePopup;
+        public static GameAssets i
+        {
+            get
+            {
+                if (_i = null) _i = Instantiate(Resources.Load<GameAssets>("GameAssets"));
+                return _i;
+            }
+        }
+
+        public Transform pfDamagePopup;
+    }
 }

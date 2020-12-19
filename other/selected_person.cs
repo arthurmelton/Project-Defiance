@@ -1,48 +1,49 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class selected_person : MonoBehaviour
+namespace other
 {
-    public int selected;
+    public class selected_person : MonoBehaviour
+    {
+        public int selected;
     
-    public void bow()
-    {
-        selected = 1;
+        public void bow()
+        {
+            selected = 1;
 
-        PlayerPrefs.SetInt("Selcted", selected);
-        PlayerPrefs.Save();
-    }
+            PlayerPrefs.SetInt("Selcted", selected);
+            PlayerPrefs.Save();
+        }
 
-    public void Crossbow()
-    {
-        selected = 2;
+        public void Crossbow()
+        {
+            selected = 2;
 
-        PlayerPrefs.SetInt("Selcted", selected);
-        PlayerPrefs.Save();
-    }
+            PlayerPrefs.SetInt("Selcted", selected);
+            PlayerPrefs.Save();
+        }
 
-    public void dual()
-    {
-        selected = 3;
+        public void dual()
+        {
+            selected = 3;
 
-        PlayerPrefs.SetInt("Selcted", selected);
-        PlayerPrefs.Save();
-    }
+            PlayerPrefs.SetInt("Selcted", selected);
+            PlayerPrefs.Save();
+        }
 
-    public void Sniper()
-    {
-        selected = 4;
+        public void Sniper()
+        {
+            selected = 4;
 
-        PlayerPrefs.SetInt("Selcted", selected);
-        PlayerPrefs.Save();
-    }
+            PlayerPrefs.SetInt("Selcted", selected);
+            PlayerPrefs.Save();
+        }
 
-    public void Uzi()
-    {
-        selected = 5;
+        public void Uzi()
+        {
+            selected = 5;
 
-        PlayerPrefs.SetInt("Selcted", selected);
-        PlayerPrefs.Save();
+            PlayerPrefs.SetInt("Selcted", selected);
+            PlayerPrefs.Save();
+        }
     }
 }

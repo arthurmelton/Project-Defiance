@@ -1,20 +1,29 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using person.code;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class health_display : MonoBehaviour
+namespace other
 {
-
-    public GameObject Player;
-    private health health;
-    public Text healthtext;
-
-    void Update()
+    public class health_display : MonoBehaviour
     {
 
-        health = Player.GetComponent<health>();
+        [FormerlySerializedAs("Player")] public GameObject player;
+        private health _health;
+        [FormerlySerializedAs("healthtext")] public Text healthText;
+        private health _health1;
 
-        healthtext.text = "Heath : " + health.Health;
+        private void Start()
+        {
+            _health1 = player.GetComponent<health>();
+        }
+
+        private void Update()
+        {
+
+            _health = _health1;
+
+            healthText.text = "Heath : " + _health.Health;
+        }
     }
 }

@@ -1,18 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using person.code;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class barrel : MonoBehaviour
 {
 
     public ParticleSystem particle;
     public float radius;
-    public int PlayerDmg;
-    public int EniDmg;
+    [FormerlySerializedAs("PlayerDmg")] public int playerDmg;
+    [FormerlySerializedAs("EniDmg")] public int eniDmg;
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "EniBullet" || collision.gameObject.tag == "Bullet")
+        if (collision.gameObject.CompareTag("EniBullet") || collision.gameObject.CompareTag("Bullet"))
         {
             dead();
         }
@@ -21,21 +21,22 @@ public class barrel : MonoBehaviour
     public void dead()
     {
         Destroy(gameObject);
-        Instantiate(particle, gameObject.transform.position, gameObject.transform.rotation);
-        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, radius);
+        var o = gameObject;
+        Instantiate(particle, o.transform.position, o.transform.rotation);
+        var collider2Ds = Physics2D.OverlapCircleAll(transform.position, radius);
 
-        foreach(Collider2D collider2D in collider2Ds)
+        foreach(var collider2D in collider2Ds)
         {
-            health health = collider2D.GetComponent<health>();
+            var health = collider2D.GetComponent<health>();
             if(health != null)
             {
-                health.Health -= (int)((radius - Vector2.Distance(transform.position, collider2D.gameObject.transform.position)) * PlayerDmg);
+                health.Health -= (int)((radius - Vector2.Distance(transform.position, collider2D.gameObject.transform.position)) * playerDmg);
             }
 
-            eni eni = collider2D.GetComponent<eni>();
+            var eni = collider2D.GetComponent<eni.eni>();
             if (eni != null)
             {
-                eni.health -= (int)((radius - Vector2.Distance(transform.position, collider2D.gameObject.transform.position)) * EniDmg);
+                eni.health -= (int)((radius - Vector2.Distance(transform.position, collider2D.gameObject.transform.position)) * eniDmg);
             }
         }
     }

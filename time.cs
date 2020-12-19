@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using person.code;
 using UnityEngine;
 using TMPro;
 
@@ -18,7 +19,7 @@ public class time : MonoBehaviour
     public int round;
     
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         nowtime = Time.time;
 
@@ -26,7 +27,7 @@ public class time : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         time1 = Time.time - nowtime;
 

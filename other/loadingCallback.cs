@@ -1,17 +1,18 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class loadingCallback : MonoBehaviour
+namespace other
 {
-    private bool IsFirstUpdate = true;
-
-    private void Update()
+    public class loadingCallback : MonoBehaviour
     {
-        if (IsFirstUpdate)
+        private bool IsFirstUpdate = true;
+
+        private void Update()
         {
-            IsFirstUpdate = false;
-            loader.LoaderCallback();
+            if (IsFirstUpdate)
+            {
+                IsFirstUpdate = false;
+                loader.LoaderCallback();
+            }
         }
     }
 }

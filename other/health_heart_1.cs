@@ -1,58 +1,62 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using person.code;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class health_heart_1 : MonoBehaviour
+namespace other
 {
-
-    public GameObject Player;
-
-    private health Player_health;
-
-    public int Max_Player_health;
-
-    private double health_thing;
-
-    private float heath_thing3;
-
-    private decimal health_thing2;
-
-    public Rigidbody2D RB;
-
-    public Transform heart;
-
-    // Start is called before the first frame update
-    void Start()
+    public class health_heart_1 : MonoBehaviour
     {
-        Player_health = Player.GetComponent<health>();
 
-        Max_Player_health = Player_health.startHealth;
-    }
+        [FormerlySerializedAs("Player")] public GameObject player;
 
-    // Update is called once per frame
-    void Update()
-    {
-        Player_health = Player.GetComponent<health>();
+        private health _playerHealth;
 
-        if (Player_health.Health >= ((Max_Player_health / 5)))
+        [FormerlySerializedAs("Max_Player_health")] public int maxPlayerHealth;
+
+        private double _healthThing;
+
+        private float _heathThing3;
+
+        private decimal _healthThing2;
+
+        [FormerlySerializedAs("RB")] public Rigidbody2D rb;
+
+        public Transform heart;
+        private health _health;
+        private Transform _transform;
+        private Transform _heart1;
+
+        // Start is called before the first frame update
+        private void Start()
         {
-            heart = transform.Find("heart_red_1");
+            _heart1 = transform.Find("heart_red_1");
+            _transform = transform.Find("heart_red_1");
+            _health = player.GetComponent<health>();
+            _playerHealth = player.GetComponent<health>();
 
-            heart.localScale = new Vector3(0.76f, 0.7875f);
+            maxPlayerHealth = _playerHealth.startHealth;
         }
 
-        if (Player_health.Health < (Max_Player_health / 5))
+        // Update is called once per frame
+        private void Update()
         {
-            
-            health_thing = (Player_health.Health * 3.8);
+            _playerHealth = _health;
 
-            health_thing2 = (decimal)health_thing / Max_Player_health;
+            if (_playerHealth.Health >= ((maxPlayerHealth / 5)))
+            {
+                heart = _transform;
 
-            heath_thing3 = (float)health_thing2;
+                heart.localScale = new Vector3(0.76f, 0.7875f);
+            }
 
-            Transform heart1 = transform.Find("heart_red_1");
+            if (_playerHealth.Health >= (maxPlayerHealth / 5)) return;
+            _healthThing = (_playerHealth.Health * 3.8);
 
-            heart1.localScale = new Vector3(heath_thing3, 0.7875f);
+            _healthThing2 = (decimal)_healthThing / maxPlayerHealth;
+
+            _heathThing3 = (float)_healthThing2;
+
+            _heart1.localScale = new Vector3(_heathThing3, 0.7875f);
         }
     }
 }

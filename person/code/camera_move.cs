@@ -1,18 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class camera_move : MonoBehaviour
+namespace person.code
 {
-
-    public Rigidbody2D RB;
-
-    public GameObject GameObject;
-
-    void FixedUpdate()
+    public class camera_move : MonoBehaviour
     {
 
-        RB.MovePosition(GameObject.transform.position);
+        public Rigidbody2D RB;
 
+        public GameObject GameObject;
+
+        void FixedUpdate()
+        {
+
+            RB.MovePosition(GameObject.transform.position);
+
+        }
     }
 }

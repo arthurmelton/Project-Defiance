@@ -1,64 +1,67 @@
 ﻿using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+namespace other
 {
-    public int gamemode;
-
-    public int sellected;
-
-    public DiscordController controller;
-
-    public void playgame()
+    public class NewBehaviourScript : MonoBehaviour
     {
-        sellected = PlayerPrefs.GetInt("Selcted");
-        if (sellected != 0)
-            gamemode = PlayerPrefs.GetInt("gamemode");
-        if (gamemode == 1)
+        public int gamemode;
+
+        public int sellected;
+
+        public DiscordController controller;
+
+        public void playgame()
         {
-            loader.load(loader.Scene.game);
+            sellected = PlayerPrefs.GetInt("Selcted");
+            if (sellected != 0)
+                gamemode = PlayerPrefs.GetInt("gamemode");
+            if (gamemode == 1)
+            {
+                loader.load(loader.Scene.game);
+            }
+
+            if (gamemode == 2)
+            {
+                loader.load(loader.Scene.game_1);
+            }
+
         }
 
-        if (gamemode == 2)
+        public void quit()
         {
-            loader.load(loader.Scene.game_1);
+            Application.Quit();
+
+        }
+
+        public void deadreplay()
+        {
+            loader.load(loader.Scene.people_select);
+        }
+
+        public void mainmenu()
+        {
+            loader.load(loader.Scene.mainmenu);
+        }
+
+        public void select()
+        {
+            gamemode = 1;
+
+            PlayerPrefs.SetInt("gamemode", gamemode);
+            PlayerPrefs.Save();
+
+            loader.load(loader.Scene.people_select);
+        }
+
+        public void select1()
+        {
+            gamemode = 2;
+
+            PlayerPrefs.SetInt("gamemode", gamemode);
+            PlayerPrefs.Save();
+
+            loader.load(loader.Scene.people_select);
         }
 
     }
-
-    public void quit()
-    {
-        Application.Quit();
-
-    }
-
-    public void deadreplay()
-    {
-        loader.load(loader.Scene.people_select);
-    }
-
-    public void mainmenu()
-    {
-        loader.load(loader.Scene.mainmenu);
-    }
-
-    public void select()
-    {
-        gamemode = 1;
-
-        PlayerPrefs.SetInt("gamemode", gamemode);
-        PlayerPrefs.Save();
-
-        loader.load(loader.Scene.people_select);
-    }
-
-    public void select1()
-    {
-        gamemode = 2;
-
-        PlayerPrefs.SetInt("gamemode", gamemode);
-        PlayerPrefs.Save();
-
-        loader.load(loader.Scene.people_select);
-    }
-
 }
