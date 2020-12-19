@@ -751,7 +751,7 @@ MonoBehaviour:
   state: 'Round - '
   img: zombie
   hasRoundCount: 1
-  newest: 0
+  newest: 1
   time: {fileID: 514204872}
   Time1: 0
 --- !u!4 &159659563
@@ -4952,7 +4952,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemode: 0
   sellected: 0
-  controller: {fileID: 0}
 --- !u!4 &1275865463
 Transform:
   m_ObjectHideFlags: 0

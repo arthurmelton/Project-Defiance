@@ -307,7 +307,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamemode: 0
   sellected: 0
-  controller: {fileID: 248658736}
 --- !u!4 &248658735
 Transform:
   m_ObjectHideFlags: 0
