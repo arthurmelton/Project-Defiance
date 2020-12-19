@@ -54,7 +54,7 @@ public class eni : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        path.maxSpeed = MoveSpeed * Time.deltaTime * 60;
+        path.maxSpeed = MoveSpeed * Time.deltaTime * 60; // fixed pathfinding speed so it goes the same speed for everyone
 
         if (health <= 0)
         {
