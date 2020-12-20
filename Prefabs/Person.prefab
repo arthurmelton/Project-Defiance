@@ -147,7 +147,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -304,7 +304,6 @@ MonoBehaviour:
   Ui_To_disable: {fileID: 0}
   partial: {fileID: 3415302331647644195, guid: 2af90a1060239f541b409d84bc4f7e3b, type: 3}
   selleted: {fileID: 0}
-  explodeDmg: 1
 --- !u!114 &1740455395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,5 +341,6 @@ MonoBehaviour:
   sniper: {fileID: 21300000, guid: 13a2bc713f1a3e6488fe37884666d171, type: 3}
   uzi: {fileID: 21300000, guid: 65b4f6e402e5c7b419b42a137848f2f9, type: 3}
   cloak: 0
-  timetillnextcloak: 10
-  timecanholdfloat: 9
+  timeTillNextCloak: 10
+  timeCanHoldFloat: 9
+  startCloak: 3.4028235e+38
