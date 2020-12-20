@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace other
 {
     public class player : MonoBehaviour
     {
-
         public int selected;
         public SpriteRenderer sprite;
         public Sprite bow;
@@ -13,107 +13,92 @@ namespace other
         public Sprite dual;
         public Sprite sniper;
         public Sprite uzi;
-        public float cloak = 0;
-        private float nextActionTime = 0.0f;
-        public float timetillnextcloak = 10f;
-        public float timecanholdfloat = 9f;
-        private int rightnow = 0;
+        public float cloak;
 
+        [FormerlySerializedAs("timetillnextcloak")]
+        public float timeTillNextCloak = 10f;
+
+        [FormerlySerializedAs("timecanholdfloat")]
+        public float timeCanHoldFloat = 9f;
+
+        [FormerlySerializedAs("_startCloak")] [SerializeField]
         private float startCloak = float.MaxValue;
 
+        private float _abilityOne;
+        private float _abilityTwo;
+        private float _nextActionTime;
+        private int _rightNow;
 
-        public NewControls inputs;
-        private float abilityOne;
-        private float abilityTwo;
+
+        public NewControls Inputs;
 
         private void Awake()
         {
-            inputs = new NewControls();
+            Inputs = new NewControls();
 
-            inputs.player.abilityone.performed += context => abilityOne = context.ReadValue<float>();
+            Inputs.player.abilityone.performed += context => _abilityOne = context.ReadValue<float>();
 
-            inputs.player.abilityone.canceled += context => abilityOne = 0f;
+            Inputs.player.abilityone.canceled += context => _abilityOne = 0f;
 
-            inputs.player.abilitytwo.performed += context => abilityTwo = context.ReadValue<float>();
+            Inputs.player.abilitytwo.performed += context => _abilityTwo = context.ReadValue<float>();
 
-            inputs.player.abilitytwo.canceled += context => abilityTwo = 0f;
+            Inputs.player.abilitytwo.canceled += context => _abilityTwo = 0f;
         }
 
-        private void OnEnable()
-        {
-            inputs.Enable();
-        }
-        private void OnDisable()
-        {
-            inputs.Disable();
-        }
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             selected = PlayerPrefs.GetInt("Selcted");
 
-            if (selected == 1)
+            switch (selected)
             {
-                sprite.sprite = bow;
+                case 1:
+                    sprite.sprite = bow;
+                    break;
+                case 2:
+                    sprite.sprite = crossbow;
+                    break;
+                case 3:
+                    sprite.sprite = dual;
+                    break;
+                case 4:
+                    sprite.sprite = sniper;
+                    break;
+                case 5:
+                    sprite.sprite = uzi;
+                    break;
             }
-
-            if (selected == 2)
-            {
-                sprite.sprite = crossbow;
-            }
-
-            if (selected == 3)
-            {
-                sprite.sprite = dual;
-            }
-
-            if (selected == 4)
-            {
-                sprite.sprite = sniper;
-            }
-
-            if (selected == 5)
-            {
-                sprite.sprite = uzi;
-            }
-
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
-
             if (cloak == 0)
-            {
-                if (rightnow == 1)
+                if (_rightNow == 1)
                 {
-                    nextActionTime = Time.time + timetillnextcloak;
-                    rightnow = 0;
+                    _nextActionTime = Time.time + timeTillNextCloak;
+                    _rightNow = 0;
                 }
-            }
 
             if (selected == 4)
             {
-                if (abilityOne == 1)
+                if (_abilityOne == 1)
                 {
-                    if (abilityTwo == 1)
+                    if (_abilityTwo == 1)
                     {
                         cloak = 0;
                         sprite.color = new Color(1f, 1f, 1f, 1f);
                     }
                     else
                     {
-                        if (Time.time > nextActionTime)
-                        {
+                        if (!(Time.time > _nextActionTime)) return;
+                        cloak = 1;
 
-                            cloak = 1;
+                        StartCoroutine(Cloak1());
 
-                            StartCoroutine(Cloak1());
+                        sprite.color = new Color(1f, 1f, 1f, 0.5f);
 
-                            sprite.color = new Color(1f, 1f, 1f, 0.5f);
-
-                            rightnow = 1;
-                        }
+                        _rightNow = 1;
                     }
                 }
                 else
@@ -129,16 +114,24 @@ namespace other
             }
         }
 
+        private void OnEnable()
+        {
+            Inputs.Enable();
+        }
+
+        private void OnDisable()
+        {
+            Inputs.Disable();
+        }
+
         private IEnumerator Cloak1()
         {
-            yield return new WaitForSeconds(timecanholdfloat);
+            yield return new WaitForSeconds(timeCanHoldFloat);
 
-            if (cloak == 1)
-            {
-                cloak = 0;
-                sprite.color = new Color(1f, 1f, 1f, 1f);
-                rightnow = 1;
-            }
+            if (cloak != 1) yield break;
+            cloak = 0;
+            sprite.color = new Color(1f, 1f, 1f, 1f);
+            _rightNow = 1;
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class animationGif : MonoBehaviour
@@ -9,32 +7,27 @@ public class animationGif : MonoBehaviour
     public Image image;
     public float speed;
     public bool destroy;
-    private float time;
+
+    private Image _image;
+    private float _time;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        _image = GetComponent<Image>();
         speed = 1 / speed;
         destroy = false;
-        time = Time.time;
+        _time = Time.time;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        image.sprite = sprites [(int)((Time.time - time)*speed)%sprites.Length];
+        image.sprite = sprites[(int) ((Time.time - _time) * speed) % sprites.Length];
 
-        if(((int)((Time.time - time) * speed) % sprites.Length) == 12)
-        {
-            destroy = true;
-        }
+        if ((int) ((Time.time - _time) * speed) % sprites.Length == 12) destroy = true;
 
-        if (((int)((Time.time - time) * speed) % sprites.Length) == 0)
-        {
-            if(destroy == true)
-            {
-                Destroy(GetComponent<Image>());
-                
-            }
-        }
+        if ((int) ((Time.time - _time) * speed) % sprites.Length != 0) return;
+        if (destroy) Destroy(_image);
     }
 }

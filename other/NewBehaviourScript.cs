@@ -15,32 +15,30 @@ namespace other
             sellected = PlayerPrefs.GetInt("Selcted");
             if (sellected != 0)
                 gamemode = PlayerPrefs.GetInt("gamemode");
-            if (gamemode == 1)
+            switch (gamemode)
             {
-                loader.load(loader.Scene.game);
+                case 1:
+                    loader.Load(loader.Scene.game);
+                    break;
+                case 2:
+                    loader.Load(loader.Scene.game_1);
+                    break;
             }
-
-            if (gamemode == 2)
-            {
-                loader.load(loader.Scene.game_1);
-            }
-
         }
 
         public void quit()
         {
             Application.Quit();
-
         }
 
         public void deadreplay()
         {
-            loader.load(loader.Scene.people_select);
+            loader.Load(loader.Scene.people_select);
         }
 
         public void mainmenu()
         {
-            loader.load(loader.Scene.mainmenu);
+            loader.Load(loader.Scene.mainmenu);
         }
 
         public void select()
@@ -50,7 +48,7 @@ namespace other
             PlayerPrefs.SetInt("gamemode", gamemode);
             PlayerPrefs.Save();
 
-            loader.load(loader.Scene.people_select);
+            loader.Load(loader.Scene.people_select);
         }
 
         public void select1()
@@ -60,8 +58,7 @@ namespace other
             PlayerPrefs.SetInt("gamemode", gamemode);
             PlayerPrefs.Save();
 
-            loader.load(loader.Scene.people_select);
+            loader.Load(loader.Scene.people_select);
         }
-
     }
 }

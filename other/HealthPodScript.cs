@@ -1,40 +1,29 @@
 ﻿using person.code;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace other
 {
     public class HealthPodScript : MonoBehaviour
     {
-        public int AddHealth = 10;
+        [FormerlySerializedAs("AddHealth")] public int addHealth = 10;
 
-        private int MaxHeath = 100;
+        [FormerlySerializedAs("CircleCollider2D")]
+        public CircleCollider2D circleCollider2D;
 
-        public CircleCollider2D CircleCollider2D;
+        private readonly int MaxHeath = 100;
 
         // Start is called before the first frame update
-        void Start()
-        {
-
-        }
 
         // Update is called once per frame
-        void Update()
-        {
-        
-        }
 
-        void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == "Player")
-            {
-                var person = collision.gameObject.GetComponent<health>();
-                if (person.Health < MaxHeath)
-                {
-                    Destroy(gameObject);
-                    person.Health += AddHealth;
-                }
-
-            }
+            if (!collision.gameObject.CompareTag("Player")) return;
+            var person = collision.gameObject.GetComponent<health>();
+            if (person.Health >= MaxHeath) return;
+            Destroy(gameObject);
+            person.Health += addHealth;
         }
     }
 }

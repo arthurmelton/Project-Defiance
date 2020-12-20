@@ -1,49 +1,34 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace other
 {
-    public class look_at_player : MonoBehaviour
+    public class LookAtPlayer : MonoBehaviour
     {
-        public Rigidbody2D RB;
-        public Rigidbody2D Player;
-        public int Range = 5;
+        [FormerlySerializedAs("RB")] public Rigidbody2D rb;
+        [FormerlySerializedAs("Player")] public Rigidbody2D player;
+        [FormerlySerializedAs("Range")] public int range = 5;
 
 
         // Start is called before the first frame update
-        void Start()
-        {
-
-        }
 
         // Update is called once per frame
-        void Update()
+
+
+        private void FixedUpdate()
         {
-
-        }
-
-
-        void FixedUpdate()
-        {
-
             // what is the players current position
-            Vector2 playerPosition = Player.position;
+            var playerPosition = player.position;
             // what is the my current position
-            Vector2 myPosition = RB.position;
+            var myPosition = rb.position;
 
             // try to look at the person
             // what direction should i be looking
-            Vector2 lookAt = playerPosition - myPosition;
-            // what is the angle to trun?
-            float angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg + 90f;
+            var lookAt = playerPosition - myPosition;
+            // what is the angle to turn?
+            var angle = Mathf.Atan2(lookAt.y, lookAt.x) * Mathf.Rad2Deg + 90f;
             // rotate the player
-            RB.rotation = angle;
-
-        
-        }
-
-        void OnCollisionEnter2D(Collision2D col)
-        {
-
+            rb.rotation = angle;
         }
     }
 }

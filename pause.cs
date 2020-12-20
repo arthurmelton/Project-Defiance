@@ -1,58 +1,59 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class pause : MonoBehaviour
 {
-    public GameObject canvis;
-    public GameObject newCanvis;
-
-    public NewControls inputs;
+    [FormerlySerializedAs("canvis")] public GameObject canvas;
+    [FormerlySerializedAs("newCanvis")] public GameObject newCanvas;
 
     public GameObject pauseFirstSelect;
+
+    private NewControls _inputs;
+
     // Start is called before the first frame update
     private void Awake()
     {
-        inputs = new NewControls();
+        _inputs = new NewControls();
 
-        inputs.player.esc.performed += context => show();
+        _inputs.player.esc.performed += context => Show();
     }
 
     private void Start()
     {
-        hide();
+        Hide();
     }
 
     private void OnEnable()
     {
-        inputs.Enable();
-    }
-    private void OnDisable()
-    {
-        inputs.Disable();
+        _inputs.Enable();
     }
 
-    public void show()
+    private void OnDisable()
     {
-        if(Time.timeScale == 0f)
+        _inputs.Disable();
+    }
+
+    public void Show()
+    {
+        if (Time.timeScale == 0f)
         {
-            hide();
+            Hide();
         }
         else
         {
             Time.timeScale = 0f;
-            canvis.SetActive(false);
-            newCanvis.SetActive(true);
+            canvas.SetActive(false);
+            newCanvas.SetActive(true);
             EventSystem.current.SetSelectedGameObject(null);
             EventSystem.current.SetSelectedGameObject(pauseFirstSelect);
         }
     }
 
-    public void hide()
+    public void Hide()
     {
         Time.timeScale = 1f;
-        canvis.SetActive(true);
-        newCanvis.SetActive(false);
+        canvas.SetActive(true);
+        newCanvas.SetActive(false);
     }
 }

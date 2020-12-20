@@ -554,9 +554,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08e5bfa0b935fce499a5f91c03d8e1b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1740455394}
-  Max_Player_health: 100
-  RB: {fileID: 588760091}
+  player: {fileID: 1740455394}
+  maxPlayerHealth: 100
+  rb: {fileID: 588760091}
 --- !u!114 &126164706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,8 +780,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20f46e7701bc2b1409cbc251b4907fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvis: {fileID: 1617171950}
-  newCanvis: {fileID: 924614033}
+  canvas: {fileID: 1617171950}
+  newCanvas: {fileID: 924614033}
   pauseFirstSelect: {fileID: 855645179}
 --- !u!1 &205478649
 GameObject:
@@ -2787,8 +2787,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7ac149e9464cca4a80260afd3476aff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1740455394}
-  Max_Player_health: 100
+  player: {fileID: 1740455394}
+  maxPlayerHealth: 100
 --- !u!114 &747091435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3307,9 +3307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28da1d5bfde80274982f5590da34d0f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1740455394}
-  Max_Player_health: 0
-  RB: {fileID: 536329296}
+  player: {fileID: 1740455394}
+  maxPlayerHealth: 0
+  rb: {fileID: 536329296}
   heart: {fileID: 536329292}
 --- !u!1 &855645179
 GameObject:
@@ -3394,7 +3394,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 159659564}
-        m_MethodName: hide
+        m_MethodName: Hide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5151,8 +5151,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa72e340f257ed74b937bd32f802d896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1740455394}
-  Max_Player_health: 100
+  player: {fileID: 1740455394}
+  maxPlayerHealth: 100
 --- !u!114 &1459914452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6584,8 +6584,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9da30a514f1e24ea80bf5b1303dc6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1740455394}
-  Max_Player_health: 100
+  player: {fileID: 1740455394}
+  maxPlayerHealth: 100
 --- !u!114 &1717837546
 MonoBehaviour:
   m_ObjectHideFlags: 0
