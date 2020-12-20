@@ -63,6 +63,8 @@ namespace other
                     break;
                 case 4:
                     sprite.sprite = sniper;
+                    var light = gameObject.GetComponentsInChildren<Light2D>();
+                    foreach (var light2D in light) light2D.pointLightOuterRadius *= 2;
                     break;
                 case 5:
                     sprite.sprite = uzi;
