@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.LWRP;
 using UnityEngine.Serialization;
 
 namespace other
@@ -28,8 +29,10 @@ namespace other
         private float _abilityTwo;
         private float _nextActionTime;
         private int _rightNow;
+        private TurnRed _turnRed;
 
 
+        // ReSharper disable once MemberCanBePrivate.Global
         public NewControls Inputs;
 
         private void Awake()
@@ -48,6 +51,7 @@ namespace other
         // Start is called before the first frame update
         private void Start()
         {
+            _turnRed = gameObject.GetComponent<TurnRed>();
             selected = PlayerPrefs.GetInt("Selcted");
 
             switch (selected)
@@ -75,6 +79,8 @@ namespace other
         // Update is called once per frame
         private void Update()
         {
+            _turnRed._TurnRed();
+            var spriteColor = sprite.color;
             if (cloak == 0)
                 if (_rightNow == 1)
                 {
@@ -89,7 +95,7 @@ namespace other
                     if (_abilityTwo == 1)
                     {
                         cloak = 0;
-                        sprite.color = new Color(1f, 1f, 1f, 1f);
+                        spriteColor.a = 1f;
                     }
                     else
                     {
@@ -98,7 +104,7 @@ namespace other
 
                         StartCoroutine(Cloak1());
 
-                        sprite.color = new Color(1f, 1f, 1f, 0.5f);
+                        spriteColor.a = 0.5f;
 
                         _rightNow = 1;
                     }
@@ -106,13 +112,13 @@ namespace other
                 else
                 {
                     cloak = 0;
-                    sprite.color = new Color(1f, 1f, 1f, 1f);
+                    spriteColor.a = 1f;
                 }
             }
             else
             {
                 cloak = 0;
-                sprite.color = new Color(1f, 1f, 1f, 1f);
+                spriteColor.a = 1f;
             }
         }
 

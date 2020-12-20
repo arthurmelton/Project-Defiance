@@ -2589,7 +2589,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 3
+  m_PointLightOuterRadius: 1.5
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -6398,7 +6398,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 90
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 6
+  m_PointLightOuterRadius: 3
   m_PointLightDistance: 3
   m_PointLightQuality: 1
   m_ShapeLightParametricSides: 5
@@ -6817,9 +6817,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 579cc3d08f424b6409d7b66edd04b282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1740455398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740455394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f5c4cba239eccb489dee1b892a6726e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 1740455402}
+  testingOne: 0
+  testingTwo: 0
+  testingThree: 0
 --- !u!50 &1740455399 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 7400157952810495749, guid: c2fe36dd284b3f2488a9818430e8e70f,
+    type: 3}
+  m_PrefabInstance: {fileID: 7400157952301077216}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1740455402 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7400157952810495750, guid: c2fe36dd284b3f2488a9818430e8e70f,
     type: 3}
   m_PrefabInstance: {fileID: 7400157952301077216}
   m_PrefabAsset: {fileID: 0}
@@ -8598,6 +8620,21 @@ PrefabInstance:
     - target: {fileID: 7400157952810495750, guid: c2fe36dd284b3f2488a9818430e8e70f,
         type: 3}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400157952810495750, guid: c2fe36dd284b3f2488a9818430e8e70f,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400157952810495750, guid: c2fe36dd284b3f2488a9818430e8e70f,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7400157952810495750, guid: c2fe36dd284b3f2488a9818430e8e70f,
+        type: 3}
+      propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7400157952810495751, guid: c2fe36dd284b3f2488a9818430e8e70f,
