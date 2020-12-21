@@ -1242,11 +1242,10 @@ MonoBehaviour:
   eni: {fileID: 2107479977}
   nextActionTime: 0
   timetillnextenispawn: 20
-  nextActionTime1: 0
-  timetillnextactiontimeislowered: 4
   RB: {fileID: 334984673}
   time: {fileID: 0}
   timetext: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!4 &334984673
 Transform:
   m_ObjectHideFlags: 0
@@ -1293,11 +1292,10 @@ MonoBehaviour:
   eni: {fileID: 2107479977}
   nextActionTime: 0
   timetillnextenispawn: 20
-  nextActionTime1: 0
-  timetillnextactiontimeislowered: 4
   RB: {fileID: 365397338}
   time: {fileID: 0}
   timetext: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!4 &365397338
 Transform:
   m_ObjectHideFlags: 0
@@ -1980,11 +1978,10 @@ MonoBehaviour:
   eni: {fileID: 2107479977}
   nextActionTime: 0
   timetillnextenispawn: 20
-  nextActionTime1: 0
-  timetillnextactiontimeislowered: 4
   RB: {fileID: 518569682}
-  time: {fileID: 0}
+  time: {fileID: 514204872}
   timetext: {fileID: 514204870}
+  boss: {fileID: 1406828701}
 --- !u!4 &518569682
 Transform:
   m_ObjectHideFlags: 0
@@ -4021,8 +4018,8 @@ MonoBehaviour:
   tagNames: []
   heuristic: 2
   heuristicScale: 1
-  threadCount: 1
-  maxFrameTime: 1
+  threadCount: -2
+  maxFrameTime: 10
   batchGraphUpdates: 0
   graphUpdateBatchingInterval: 0.2
   euclideanEmbedding:
@@ -5069,11 +5066,10 @@ MonoBehaviour:
   eni: {fileID: 2107479977}
   nextActionTime: 0
   timetillnextenispawn: 20
-  nextActionTime1: 0
-  timetillnextactiontimeislowered: 4
   RB: {fileID: 1313196878}
   time: {fileID: 0}
   timetext: {fileID: 0}
+  boss: {fileID: 0}
 --- !u!4 &1313196878
 Transform:
   m_ObjectHideFlags: 0
@@ -5167,6 +5163,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 35
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1406828700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1406828702}
+  - component: {fileID: 1406828701}
+  m_Layer: 0
+  m_Name: GameObject (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1406828701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406828700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da99a2f70e996a4b908338150a1f681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eni1: {fileID: 2107479977}
+  bossDmgGetHarderBy: 2
+  bossSpeedGetHarderBy: 0.5
+  bossHealthGetHarderBy: 2
+--- !u!4 &1406828702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406828700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1459914449
 GameObject:
@@ -7886,8 +7929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 2
-  radius: 0.16
-  height: 0.01
+  radius: 1.36
+  height: 3.91
   repathRate: 0.05
   canSearch: 1
   canMove: 1
@@ -7903,7 +7946,7 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 0
-  pickNextWaypointDist: 1
+  pickNextWaypointDist: 0.7
   endReachedDistance: 0.05
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
@@ -7937,6 +7980,22 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &2107479981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2107479977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd4a146a7161c9439ad56449d29fa51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time1: {fileID: 514204872}
+  healthGetHarderBy: 1.1
+  speedGetHarderBy: 1.1
+  dmgGetHarderBy: 1.1
 --- !u!1001 &128731377103590773
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace other
 {
@@ -16,6 +17,8 @@ namespace other
 
         public GameObject timetext;
 
+        [FormerlySerializedAs("Boss")] public SpawnBoss boss;
+
         private bool _isTimeNotNull;
 
         // Start is called before the first frame update
@@ -30,7 +33,11 @@ namespace other
         {
             if (!(Time.time > nextActionTime)) return;
             nextActionTime = Time.time + timetillnextenispawn;
-            if (_isTimeNotNull) time.round += 1;
+            if (_isTimeNotNull)
+            {
+                time.round += 1;
+                if (time.round % 10 == 0) boss.Spawn();
+            }
 
             Instantiate(eni, RB.position, RB.rotation);
         }
