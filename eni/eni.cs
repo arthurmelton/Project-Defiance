@@ -10,36 +10,62 @@ namespace eni
     public class eni : MonoBehaviour
     {
         public int health = 100;
+
         public Rigidbody2D RB;
+
         public Rigidbody2D Player;
+
         public int Range = 5;
+
         public float MoveSpeed = 3f;
+
         public Transform FirePoint1;
+
         public GameObject Bullet1;
-        private float nextActionTime = 0.0f;
+
         public float TimeBetweenShootCycle = 1.0f;
-        private int StartHealth;
-        private bool HasBeenSeen;
+
         public SpriteRenderer SpriteRenderer;
-        private decimal heathdouble;
-        private float healthFloat;
-        private player Player1;
+
         public GameObject Player2;
-        private health health1;
+
         public GameObject theint;
-        private numberofeni numberofeni;
+
         public int ZombieDmg;
-        private float nextActionTime7 = 0.0f;
+
         public float zombieAttackSpeed = 0.2f;
+
         public ParticleSystem partial;
+
         public animationGif image;
-        private Vector3 location;
+
         public AIPath path;
+
         public ParticleSystem partial1;
 
-        private weapon weapon;
         private player _player;
 
+        private bool HasBeenSeen;
+
+        private health health1;
+
+        private float healthFloat;
+
+        private decimal heathdouble;
+
+        private Vector3 location;
+
+        private float nextActionTime;
+
+        private float nextActionTime7;
+
+        private numberofeni numberofeni;
+
+        private player Player1;
+
+        private int StartHealth;
+
+        private weapon weapon;
 
         // Start is called before the first frame update
         private void Start()
@@ -75,9 +101,9 @@ namespace eni
                 weapon.killed += 1;
             }
 
-            heathdouble = (decimal)health / StartHealth;
+            heathdouble = (decimal) health / StartHealth;
 
-            healthFloat = (float)heathdouble;
+            healthFloat = (float) heathdouble;
 
             //color = new Color(255, 1, 1, 1f);
 
@@ -115,14 +141,8 @@ namespace eni
                         // rotate the player
                         RB.rotation = angle;
                         // now chase them
-                        if (gameObject.CompareTag("Zombie") && image.destroy)
-                        {
-                            path.canMove = true;
-                        }
-                        if (!gameObject.CompareTag("Zombie"))
-                        {
-                            path.canMove = true;
-                        }
+                        if (gameObject.CompareTag("Zombie") && image.destroy) path.canMove = true;
+                        if (!gameObject.CompareTag("Zombie")) path.canMove = true;
 
                         const double tolerance = 0;
                         if (Time.time > nextActionTime && Math.Abs(TimeBetweenShootCycle - 9999) > tolerance)
@@ -137,13 +157,11 @@ namespace eni
                 }
                 case 1:
                     path.canMove = false;
+
                     break;
             }
 
-            if (Player1.cloak == 0)
-            {
-                path.canMove = true;
-            }
+            if (Player1.cloak == 0) path.canMove = true;
 
         }
 
@@ -151,6 +169,7 @@ namespace eni
         {
             // ouch i hit something?  was it a bullet?
             if (!col.gameObject.CompareTag("Bullet") || !gameObject.CompareTag("Eni")) return;
+
             var bullet = col.gameObject.GetComponent<bullet>();
             // decrease my health by the bullet damage
             health -= bullet.dmg;
@@ -160,9 +179,10 @@ namespace eni
         {
             if (!collision.gameObject.CompareTag("Player") || !gameObject.CompareTag("Zombie")) return;
             if (!(Time.time > nextActionTime7)) return;
+
             nextActionTime7 = Time.time + zombieAttackSpeed;
+
             health1.Health -= ZombieDmg;
         }
-
     }
 }

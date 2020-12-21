@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class GetHarder : MonoBehaviour
 {
     // ReSharper disable once MemberCanBePrivate.Global
@@ -17,14 +16,12 @@ public class GetHarder : MonoBehaviour
     private void Start()
     {
         _eni = gameObject.GetComponent<eni.eni>();
-
         var round = time1.round;
 
         if (round == 0 || round == 1) return;
+
         _eni.health = (int) (_eni.health * Mathf.Pow(healthGetHarderBy, round));
-
         _eni.MoveSpeed *= Mathf.Pow(speedGetHarderBy, round);
-
         _eni.ZombieDmg = (int) (_eni.ZombieDmg * Mathf.Pow(dmgGetHarderBy, round));
     }
 }

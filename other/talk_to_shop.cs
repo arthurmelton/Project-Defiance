@@ -18,7 +18,9 @@ namespace other
         private void Start()
         {
             Ui_to_disable.SetActive(true);
+
             Ui_to_enable.SetActive(false);
+
             PlayerPrefs.SetInt("shop", 0);
         }
 
@@ -27,24 +29,30 @@ namespace other
         {
             // what is the players current position
             var shopPosition = Shop.position;
+
             // what is the my current position
             var myPosition = RB.position;
 
             // is the player within range
-            if (Vector2.Distance(shopPosition, myPosition) <= look_At_Player.range && Input.GetKeyDown(KeyCode.E) &&
-                Ui_to_disable.activeSelf)
+            if (Vector2.Distance(shopPosition, myPosition) <= look_At_Player.range && Input.GetKeyDown(KeyCode.E) && Ui_to_disable.activeSelf)
             {
                 Ui_to_enable.SetActive(true);
+
                 Ui_to_disable.SetActive(false);
+
                 PlayerPrefs.SetInt("shop", 1);
+
                 PlayerPrefs.Save();
             }
 
             if (Vector2.Distance(shopPosition, myPosition) > look_At_Player.range)
             {
                 Ui_to_enable.SetActive(false);
+
                 Ui_to_disable.SetActive(true);
+
                 PlayerPrefs.SetInt("shop", 0);
+
                 PlayerPrefs.Save();
             }
         }
@@ -52,8 +60,11 @@ namespace other
         public void exitshop()
         {
             Ui_to_enable.SetActive(false);
+
             Ui_to_disable.SetActive(true);
+
             PlayerPrefs.SetInt("shop", 0);
+
             PlayerPrefs.Save();
         }
     }

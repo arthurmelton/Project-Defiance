@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using person.code;
-using UnityEngine;
+﻿using person.code;
 using TMPro;
-
+using UnityEngine;
 public class time : MonoBehaviour
 {
     public TextMeshProUGUI tmp;
@@ -14,10 +11,10 @@ public class time : MonoBehaviour
 
     public GameObject player;
 
+    public int round;
+
     private weapon weapon;
 
-    public int round;
-    
     // Start is called before the first frame update
     private void Start()
     {
@@ -33,6 +30,6 @@ public class time : MonoBehaviour
 
         time1 = Mathf.Floor(time1);
 
-        tmp.text = "Time : " + time1.ToString() + "     Enemies killed : " + weapon.killed.ToString() + "     Round : " + round.ToString();
+        tmp.text = "Time : " + time1 + "     Enemies killed : " + weapon.killed + "     Round : " + round;
     }
 }

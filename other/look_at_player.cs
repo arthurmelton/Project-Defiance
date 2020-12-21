@@ -6,14 +6,10 @@ namespace other
     public class LookAtPlayer : MonoBehaviour
     {
         [FormerlySerializedAs("RB")] public Rigidbody2D rb;
+
         [FormerlySerializedAs("Player")] public Rigidbody2D player;
+
         [FormerlySerializedAs("Range")] public int range = 5;
-
-
-        // Start is called before the first frame update
-
-        // Update is called once per frame
-
 
         private void FixedUpdate()
         {
