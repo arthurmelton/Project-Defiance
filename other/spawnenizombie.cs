@@ -4,47 +4,35 @@ namespace other
 {
     public class spawnenizombie : MonoBehaviour
     {
-    
         public GameObject eni;
-    
-        public float nextActionTime = 0.0f;
+
+        public float nextActionTime;
 
         public float timetillnextenispawn = 10f;
-
-        public float nextActionTime1 = 0.0f;
-
-        public float timetillnextactiontimeislowered = 10;
 
         public Transform RB;
 
         public time time;
 
         public GameObject timetext;
-    
+
+        private bool _isTimeNotNull;
+
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
+            _isTimeNotNull = time != null;
             time = timetext.GetComponent<time>();
         }
 
         // Update is called once per frame
-        void Update()
+        public void Update()
         {
-            if(Time.time > nextActionTime) 
-            {
-                nextActionTime = Time.time + timetillnextenispawn;
+            if (!(Time.time > nextActionTime)) return;
+            nextActionTime = Time.time + timetillnextenispawn;
+            if (_isTimeNotNull) time.round += 1;
 
-                Instantiate(eni, RB.position, RB.rotation);
-
-                time.round += 1;
-            }
-
-            if(Time.time > nextActionTime1) 
-            {
-                nextActionTime1 = Time.time + timetillnextactiontimeislowered;
-
-                timetillnextenispawn -= 0.1f;
-            }
+            Instantiate(eni, RB.position, RB.rotation);
         }
     }
 }
