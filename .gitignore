@@ -8,3 +8,7 @@
 *.dll
 *.dylib
 *.so
+*.bundle
+*.lib
+*.terrainlayer
+*.cginc
