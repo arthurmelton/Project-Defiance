@@ -4,3 +4,7 @@
 *.mat
 *.inputactions
 *.prefab
+*.shader
+*.dll
+*.dylib
+*.so
