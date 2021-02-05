@@ -12,3 +12,4 @@
 *.lib
 *.terrainlayer
 *.cginc
+AstarPathfindingProject/**
